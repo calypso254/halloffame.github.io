@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const div = document.createElement('div');
                 div.className = 'product-card';
                 div.innerHTML = `
-                    <img src="${product.image ? product.image : 'path/to/default/image.jpg'}" alt="${product.title ? product.title : 'No title available'}">
-                    <h2>${product.title ? product.title : 'Untitled'}</h2>
-                    <p>Release Date: ${product.launchDate ? product.launchDate : 'Not available'}</p>
+                    <img src="${product.image}" alt="${product.title || 'Product Image'}">
+                    <h2>${product.title || 'No Title Available'}</h2>
+                    <p>Release Date: ${product.launchDate || 'Not Available'}</p>
                 `;
                 container.appendChild(div);
             });
