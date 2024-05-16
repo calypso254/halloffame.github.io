@@ -1,0 +1,38 @@
+[
+    {
+        "productId": 3977210433,
+        "title": "Alliance for Lupus Research | Sparkle for a Cause",
+        "description": "$5030.10 raised of $5000 goal as of September 2016",
+        "tags": ["hall-of-fame"],
+        "status": "active",
+        "image": "https://cdn.shopify.com/s/files/1/0694/3771/products/image1.jpg",
+        "variantTitle": "Default Title",
+        "sku": "LRA2017",
+        "inventoryItemId": 15821942947952,
+        "launchDate": "2016-04-18"
+    },
+    {
+        "productId": 9129492801,
+        "title": "Andromeda",
+        "description": "Andromeda features fuchsia sparkle.",
+        "tags": ["hall-of-fame", "stargazer"],
+        "status": "active",
+        "image": "https://cdn.shopify.com/s/files/1/0694/3771/products/image2.jpg",
+        "variantTitle": "Default Title",
+        "sku": "SG55",
+        "inventoryItemId": 19995691649,
+        "launchDate": "2017-06-26"
+    },
+    {
+        "productId": 389800984616,
+        "title": "Antoinette Airbrush",
+        "description": null,
+        "tags": ["airbrush", "hall-of-fame"],
+        "status": "active",
+        "image": "https://cdn.shopify.com/s/files/1/0694/3771/products/image3.jpg",
+        "variantTitle": "Default Title",
+        "sku": "SG92",
+        "inventoryItemId": 3485765861416,
+        "launchDate": null
+    }
+]
