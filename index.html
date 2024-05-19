@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Gallery</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,7 +10,15 @@
     <div id="search">
         <input type="text" id="searchInput" placeholder="Search products...">
     </div>
-    <div id="productContainer"></div>
+    <div id="productContainer">
+        <!-- Example product item -->
+        <div class="product">
+            <img src="product-image.jpg" alt="Product Image">
+            <div class="product-title">Product Title</div>
+            <div class="product-price">$19.99</div>
+        </div>
+        <!-- Repeat similar blocks for more products -->
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
