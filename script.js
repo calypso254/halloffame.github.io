@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML = ''; // Clear any existing content
             data.forEach(product => {
                 const div = document.createElement('div');
-                div.className = 'product-card';
+                div.className = 'product';
                 div.innerHTML = `
                     <img src="${product.image}" alt="${product.title || 'Product Image'}">
-                    <h2>${product.title || 'No Title Available'}</h2>
-                    <p>Release Date: ${product.launchDate || 'Not Available'}</p>
+                    <div class="product-title">${product.title || 'No Title Available'}</div>
+                    <div class="launch-date">Release Date: ${product.launchDate || 'Not Available'}</div>
                 `;
                 container.appendChild(div);
             });
@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('keyup', function() {
         const searchTerm = searchInput.value.toLowerCase();
-        const productCards = document.querySelectorAll('.product-card');
+        const productCards = document.querySelectorAll('.product');
         productCards.forEach(card => {
-            const name = card.querySelector('h2').textContent.toLowerCase();
+            const name = card.querySelector('.product-title').textContent.toLowerCase();
             card.style.display = name.includes(searchTerm) ? 'block' : 'none';
         });
     });
