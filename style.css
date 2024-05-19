@@ -1,31 +1,71 @@
+/* Base styles */
 body {
-    font-family: Futura, sans-serif;
+    font-family: 'Futura', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
 }
 
-#productContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.product-card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    margin: 10px;
-    padding: 10px;
+#search {
     text-align: center;
-    flex: 1 1 calc(25% - 20px); /* Default to four columns */
+    padding: 20px;
 }
 
-.product-card img {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* This keeps the image square */
-    object-fit: cover;
+#searchInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 50%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-@media screen and (max-width: 798px) {
-    .product-card {
-        flex: 1 1 calc(50% - 20px); /* Two columns on smaller screens */
+/* Container for products */
+#productContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 798px) {
+    #productContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
     }
+}
+
+/* Individual product styles */
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-price {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
