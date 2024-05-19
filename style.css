@@ -1,20 +1,35 @@
 body {
     font-family: Arial, sans-serif;
 }
+
 #productContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 .product-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 300px;
+    width: 300px; /* Fixed width for product cards */
     margin: 10px;
     padding: 10px;
     text-align: center;
 }
+
 .product-card img {
     width: 100%;
     height: auto;
+}
+
+@media screen and (min-width: 798px) {
+    #productContainer .product-card {
+        flex: 1 1 calc(25% - 20px); /* Four columns with some spacing */
+    }
+}
+
+@media screen and (max-width: 797px) {
+    #productContainer .product-card {
+        flex: 1 1 calc(50% - 20px); /* Two columns with some spacing */
+    }
 }
