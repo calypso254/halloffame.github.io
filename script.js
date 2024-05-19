@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             const container = document.getElementById('productContainer');
+            container.innerHTML = ''; // Clear any existing content
             data.forEach(product => {
                 const div = document.createElement('div');
                 div.className = 'product-card';
