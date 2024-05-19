@@ -34,5 +34,17 @@
         "sku": "SG92",
         "inventoryItemId": 3485765861416,
         "launchDate": null
+    },
+       {
+        "productId": 389800984616,
+        "title": "Antoinette Airbrush",
+        "description": null,
+        "tags": ["airbrush", "hall-of-fame"],
+        "status": "active",
+        "image": "https://cdn.shopify.com/s/files/1/0694/3771/products/image3.jpg",
+        "variantTitle": "Default Title",
+        "sku": "SG92",
+        "inventoryItemId": 3485765861416,
+        "launchDate": null
     }
 ]
