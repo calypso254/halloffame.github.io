@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="https://pengems.com/">
+
   <title>PenGems Hall of Fame - Archived Pen Collection</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,453 +10,440 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <style>
     html {
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      background-color: #fff;
-      font-weight: 400;
-      color: #000;
-      margin: 0;
-      padding: 0;
-      font-size: 1rem;
-    }
-
-    #content p {
-      margin-bottom: 1em;
-      display: block;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Josefin Sans', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-
-    .main-nav__wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .main-nav {
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-
-    .header__logo {
-      flex: 0 1 auto;
-      text-align: center;
-    }
-
-    .header__logo img {
-      max-width: 205px;
-      height: auto;
-    }
-
-    .nav-desktop {
-      flex-grow: 1;
-      text-align: right;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .nav-desktop ul {
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-desktop ul li {
-      margin-left: 20px;
-    }
-
-    .nav-desktop ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 0.875rem;
-    }
-
-    .content-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    header {
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      padding: 1em;
-      border-bottom: 1px solid #000;
-      width: 100%;
-      position: relative;
-    }
-
-    h1 {
-      margin: 0 0 0.5em 0;
-    }
-
-    button {
-      border: 1px solid black;
-      background: white;
-      border-radius: 3px;
-      font-size: .875rem;
-      margin: 10px 0px;
-      padding: 8px;
-      font-family: 'Josefin Sans', sans-serif;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background-color: #d6dcde;
-    }
-
-    #export-csv {
-      width: 100%;
-    }
-
-    nav {
-      margin-top: 1em;
-    }
-
-    nav a {
-      color: #000;
-      text-decoration: none;
-      margin: 0 1em;
-      padding: 0.5em;
-      font-family: 'Josefin Sans', sans-serif;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #00c5cd;
-    }
-
-    .sidebar {
-      width: 15%;
-      background-color: #fff;
-      padding: 1em;
-    }
-
-    .filter-section {
-      margin-bottom: 1em;
-    }
-
-    .filter-section h3 {
-      margin-top: 0.5em;
-    }
-
-    .filter-options {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .filter-option {
-      margin-bottom: 0.5em;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 1em;
-    }
-
-    .search-bar {
-      margin-bottom: 1em;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .search-bar input {
-      padding: 0.5em;
-      width: 100%;
-      border: 1px solid #000;
-      border-radius: 3px;
-      box-sizing: border-box;
-      margin-bottom: 0.5em;
-      font-family: 'Lato', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      color: #000;
-      background-color: #fff;
-    }
-
-    .sort-options {
-      margin-bottom: 1em;
-      display: flex;
-      justify-content: flex-end;
-      padding-right: 10px;
-    }
-
-    .sort-options select {
-      padding: 0.5em;
-      width: auto;
-      border: none;
-      box-sizing: border-box;
-      text-align: right;
-      font-family: 'Josefin Sans', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1em;
-    }
-
-    @media (max-width: 798px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .pen-card {
-      background-color: white;
-      overflow: hidden;
-      box-shadow: -3px 3px rgb(0, 0, 0, 0.22);
-      border: 1px solid #ececec;
-      transition: transform 0.3s ease;
-      border-radius: 3px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pen-image-container {
-      width: 100%;
-      padding-top: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pen-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .pen-info {
-      padding: 1em;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pen-name {
-      font-weight: bold;
-      margin-bottom: 0.5em;
-      font-size: 0.75rem;
-      font-family: 'Josefin Sans', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .pen-date {
-      font-size: 0.8em;
-    }
-
-    .info-button {
-      display: block;
-      width: 80%;
-      padding: 0.5em;
-      background-color: #fff;
-      color: #000;
-      text-align: center;
-      text-decoration: none;
-      border: 1px solid #000;
-      border-radius: 4px;
-      margin: 1em auto 0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 0.8em;
-    }
-
-    .info-button:hover {
-      background-color: #d6dcde;
-    }
-
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 2em;
-    }
-
-    .pagination button {
-      margin: 0 0.5em;
-      padding: 0.5em 1em;
-      background-color: #fff;
-      border: 1px solid #000;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .pagination button:hover {
-      background-color: #d6dcde;
-    }
-
-    .pagination button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .page-link.current-page {
-      background-color: #000;
-      cursor: default;
-      color: #fff;
-    }
-
-    footer {
-      background-color: #fff;
-      color: #000;
-      text-align: center;
-      padding: 1em;
-      margin-top: 2em;
-      border-top: 1px solid #000;
-      width: 100%;
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-
-    /* Hamburger Menu Styles */
-    .hamburger-menu {
-      display: none;
-      cursor: pointer;
-      position: absolute;
-      left: 10px;
-    }
-
-    .hamburger-menu div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      margin: 5px 0;
-    }
-
-    .close-btn {
-      display: none;
-    }
-
-    /* Styles for the hamburger menu and sidebar on smaller screens */
-    @media (max-width: 798px) {
-      .content-wrapper {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 30%;
-        height: 100%;
-        background-color: #fff;
-        padding: 3em;
-        overflow-y: auto;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-        border: 1px solid black;
-      }
-
-      .sidebar.open {
-        transform: translateX(0);
-      }
-
-      .close-btn {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5em;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-
-      .sidebar .search-bar,
-      .sidebar .filter-section,
-      .sidebar #content {
-        margin-bottom: 2em;
-      }
-
-      .sidebar button {
-        width: 100%;
-      }
-
-      .main-content {
-        flex: 1;
-        padding: 1em;
-      }
-
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1em;
-      }
-
-      .main-nav__wrapper {
-        display: flex;
-        justify-content: center;
-        padding: 10px 50px 10px 50px;
-      }
-
-      .nav-desktop {
-        display: none;
-      }
-
-      .hamburger-menu {
-        display: block;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 999;
-      }
-
-      .overlay.show {
-        display: block;
-      }
-    }
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #fff;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+#content p {
+  margin-bottom: 1em;
+  display: block;
+}
+
+h1, h2, h3 {
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.main-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.header__logo {
+  flex: 0 1 auto;
+  text-align: center;
+}
+
+.header__logo img {
+  max-width: 205px;
+  height: auto;
+}
+
+.nav-desktop {
+  flex-grow: 1;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-desktop ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-desktop ul li {
+  margin-left: 20px;
+}
+
+.nav-desktop ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  position: relative;
+}
+
+h1 {
+  margin: 0 0 0.5em 0;
+}
+
+button {
+  border: 1px solid black;
+  background: white;
+  border-radius: 3px;
+  font-size: .875rem;
+  margin: 10px 0px;
+  padding: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #d6dcde;
+}
+
+#export-csv {
+  width: 100%;
+}
+
+nav {
+  margin-top: 1em;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  margin: 0 1em;
+  padding: 0.5em;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #00c5cd;
+}
+
+.sidebar {
+  width: 15%;
+  background-color: #fff;
+  padding: 1em;
+}
+
+.filter-section {
+  margin-bottom: 1em;
+}
+
+.filter-section h3 {
+  margin-top: 0.5em;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-option {
+  margin-bottom: 0.5em;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1em;
+}
+
+.search-bar {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar input {
+  padding: 0.5em;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  font-family: 'Lato', sans-serif;
+}
+
+.sort-options {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.sort-options select {
+  padding: 0.5em;
+  width: auto;
+  border: none;
+  box-sizing: border-box;
+  text-align: right;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+
+.pen-card {
+  background-color: white;
+  overflow: hidden;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.22);
+  border: 1px solid #ececec;
+  transition: transform 0.3s ease;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pen-image-container {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pen-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pen-info {
+  padding: 1em;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pen-name {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  font-size: 0.75rem;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.pen-date {
+  font-size: 0.8em;
+}
+
+.info-button {
+  display: block;
+  width: 80%;
+  padding: 0.5em;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  margin: 1em auto 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.8em;
+}
+
+.info-button:hover {
+  background-color: #d6dcde;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.pagination button {
+  margin: 0 0.5em;
+  padding: 0.5em 1em;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #d6dcde;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-link.current-page {
+  background-color: #000;
+  cursor: default;
+  color: #fff;
+}
+
+footer {
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding: 1em;
+  margin-top: 2em;
+  border-top: 1px solid #000;
+  width: 100%;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+}
+
+.hamburger-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+}
+
+.close-btn {
+  display: none;
+}
+
+/* Styles for the hamburger menu and sidebar on smaller screens */
+@media (max-width: 798px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 100%;
+    background-color: #fff;
+    padding: 1em;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    border: 1px solid black;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .close-btn {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .sidebar .search-bar,
+  .sidebar .filter-section,
+  .sidebar #content {
+    margin-bottom: 2em;
+  }
+
+  .sidebar button {
+    width: 100%;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 1em;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+
+  .main-nav__wrapper {
+    justify-content: center;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+}
   </style>
 </head>
 <body>
@@ -474,7 +463,6 @@
         <ul>
           <li><a href="https://www.pengems.com">Shop</a></li>
           <li><a href="https://www.pengems.com/pages/contact-us">Contact</a></li>
-          <li><a href="https://www.pengems.com/account">My Account</a></li>
         </ul>
       </nav>
     </div>
@@ -483,48 +471,52 @@
     <div class="overlay" id="overlay"></div>
     <aside class="sidebar" id="sidebar">
       <span class="close-btn" id="close-btn">&times;</span>
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search pens...">
-      </div>
-      <div class="filter-section">
-        <h3>Year</h3>
-        <div class="filter-options">
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2024"> 2024
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2023"> 2023
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2022" checked=""> 2022
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2021"> 2021
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2020"> 2020
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2019"> 2019
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2018"> 2018
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2017"> 2017
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2016"> 2016
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2015"> 2015
-          </label>
-          <label class="filter-option">
-            <input type="checkbox" name="year" value="2014"> 2014
-          </label>
-          <button type="button" id="uncheck-all">Clear All</button>
+      <form id="search-form" method="GET" action="https://web.archive.org/web/20230614000000/https://pengems.com/hall-of-fame/">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search pens...">
         </div>
-      </div>
+      </form>
+      <form id="filter-form" method="GET" action="https://web.archive.org/web/20230614000000/https://pengems.com/hall-of-fame/">
+        <div class="filter-section">
+          <h3>Year</h3>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2024"> 2024
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2023"> 2023
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2022" checked=""> 2022
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2021"> 2021
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2020"> 2020
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2019"> 2019
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2018"> 2018
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2017"> 2017
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2016"> 2016
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2015"> 2015
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="year" value="2014"> 2014
+            </label>
+            <button type="button" id="uncheck-all">Clear All</button>
+          </div>
+        </div>
+      </form>
       <div id="content">
         <p>Download the latest update with names and release dates as a CSV.</p>
         <p>Note: it's a work in progress, so some pens might be missing. If you spot a gap, give us a shout!</p>
@@ -553,12 +545,6 @@
   </div>
   <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Prevent form submission on Enter key press in the search input
-  const searchForm = document.getElementById('search-form');
-  searchForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-  });
-
   const API_KEY = 'AIzaSyCRa06VlXi7I3YQjhwoGEyie5FWCxp88ik';
   const SHEET_ID = '1ODiDNe9V6n56ipXfhEawY_QKi7aY6HwIzw1wuLyO-kE';
   const RANGE = 'A1:AX1000';
@@ -577,25 +563,31 @@ document.addEventListener('DOMContentLoaded', function() {
     applyFilters();
   });
 
-  function fetchPenData() {
+function fetchPenData() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
-    fetch(url).then(response => response.json()).then(data => {
-      const rows = data.values;
-      allPens = rows.slice(1).map(row => ({
-        name: row[1],
-        image: row[12],
-        date: row[47],
-        year: new Date(row[47]).getFullYear(),
-        color: row[49],
-        collection: row[50],
-        formattedDate: formatDate(row[47])
-      }));
-      applyFilters();
-    }).catch(error => {
-      console.error('Error fetching data:', error);
-      alert('Failed to fetch data: ' + error.message);
-    });
-  }
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        if (!data.values) {
+          throw new Error('Data format is incorrect or data is missing.');
+        }
+        const rows = data.values;
+        allPens = rows.slice(1).map(row => ({
+          name: row[1],
+          image: row[12],
+          date: row[47],
+          year: new Date(row[47]).getFullYear(),
+          color: row[49],
+          collection: row[50],
+          formattedDate: formatDate(row[47])
+        }));
+        applyFilters();
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        alert('Failed to fetch data: ' + error.message);
+      });
+}
 
   function applyFilters() {
     const selectedYear = Array.from(yearCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
@@ -662,23 +654,20 @@ document.addEventListener('DOMContentLoaded', function() {
     prevButton.disabled = currentPage === 1; // Disable if on the first page
     nextButton.disabled = currentPage >= totalPages; // Disable if on the last page
   }
-
   document.getElementById('next-page').addEventListener('click', function() {
     if (currentPage < totalPages) {
       currentPage++;
       displayPage(currentPage);
     }
   });
-
   document.getElementById('prev-page').addEventListener('click', function() {
     if (currentPage > 1) {
       currentPage--;
       displayPage(currentPage);
     }
   });
-
   searchInput.addEventListener('input', applyFilters);
-  yearCheckboxes.forEach(checkbox => checkbox.addEventListener('change', applyFilters));
+  document.getElementById('filter-form').addEventListener('change', applyFilters);
   document.getElementById('sort-by').addEventListener('change', function() {
     currentSort = this.value;
     sortPens(currentSort);
@@ -701,9 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     displayPage(1);
   }
-
   fetchPenData();
-
   // Update the year dynamically in the footer
   const currentYear = new Date().getFullYear();
   const copyrightElement = document.getElementById('copyright-year');
