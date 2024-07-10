@@ -189,7 +189,7 @@
       font-family: 'Lato', sans-serif;
       font-size: 1rem;
       font-weight: 400;
-      color: #000, 
+      color: #000;
       background-color: #fff;
     }
 
@@ -424,21 +424,21 @@
         gap: 1em;
       }
 
-        .main-nav__wrapper {
-    display: flex;
-    justify-content: center;
-    padding: 10px 50px 10px 50px;
-  }
+      .main-nav__wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 10px 50px 10px 50px;
+      }
 
       .nav-desktop {
         display: none;
       }
 
- .hamburger-menu {
-    display: block;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+      .hamburger-menu {
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+      }
 
       .overlay {
         display: none;
@@ -483,48 +483,48 @@
     <div class="overlay" id="overlay"></div>
     <aside class="sidebar" id="sidebar">
       <span class="close-btn" id="close-btn">&times;</span>
-              <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Search pens...">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search pens...">
+      </div>
+      <div class="filter-section">
+        <h3>Year</h3>
+        <div class="filter-options">
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2024"> 2024
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2023"> 2023
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2022" checked=""> 2022
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2021"> 2021
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2020"> 2020
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2019"> 2019
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2018"> 2018
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2017"> 2017
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2016"> 2016
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2015"> 2015
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" name="year" value="2014"> 2014
+          </label>
+          <button type="button" id="uncheck-all">Clear All</button>
         </div>
-        <div class="filter-section">
-          <h3>Year</h3>
-          <div class="filter-options">
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2024"> 2024
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2023"> 2023
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2022" checked=""> 2022
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2021"> 2021
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2020"> 2020
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2019"> 2019
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2018"> 2018
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2017"> 2017
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2016"> 2016
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2015"> 2015
-            </label>
-            <label class="filter-option">
-              <input type="checkbox" name="year" value="2014"> 2014
-            </label>
-            <button type="button" id="uncheck-all">Clear All</button>
-          </div>
-        </div>
+      </div>
       <div id="content">
         <p>Download the latest update with names and release dates as a CSV.</p>
         <p>Note: it's a work in progress, so some pens might be missing. If you spot a gap, give us a shout!</p>
@@ -597,161 +597,166 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-      function applyFilters() {
-        const selectedYear = Array.from(yearCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-        const searchTerm = searchInput.value.toLowerCase();
-        displayedPens = allPens.filter(pen => (selectedYear.length === 0 || selectedYear.includes(pen.year.toString())) && (searchTerm === "" || pen.name.toLowerCase().includes(searchTerm)));
-        sortPens(currentSort);
-        displayPage(1);
-      }
+  function applyFilters() {
+    const selectedYear = Array.from(yearCheckboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    const searchTerm = searchInput.value.toLowerCase();
+    displayedPens = allPens.filter(pen => (selectedYear.length === 0 || selectedYear.includes(pen.year.toString())) && (searchTerm === "" || pen.name.toLowerCase().includes(searchTerm)));
+    sortPens(currentSort);
+    displayPage(1);
+  }
 
-      function displayPage(page) {
-        const startIndex = (page - 1) * pensPerPage;
-        const endIndex = startIndex + pensPerPage;
-        updateDisplay(displayedPens.slice(startIndex, endIndex));
-        updatePaginationControls();
-      }
+  function displayPage(page) {
+    const startIndex = (page - 1) * pensPerPage;
+    const endIndex = startIndex + pensPerPage;
+    updateDisplay(displayedPens.slice(startIndex, endIndex));
+    updatePaginationControls();
+  }
 
-      function updateDisplay(pens) {
-        const gallery = document.querySelector('.gallery');
-        gallery.innerHTML = pens.map(pen => `
-          <div class="pen-card">
-            <div class="pen-image-container">
-              <img src="${pen.image}" alt="${pen.name} Pen" class="pen-image" width="200" height="200">
-            </div>
-            <div class="pen-info">
-              <div class="pen-name">${pen.name}</div>
-              <div class="pen-date">${pen.formattedDate}</div>
-            </div>
-          </div>
-        `).join('');
-      }
+  function updateDisplay(pens) {
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = pens.map(pen => `
+      <div class="pen-card">
+        <div class="pen-image-container">
+          <img src="${pen.image}" alt="${pen.name} Pen" class="pen-image" width="200" height="200">
+        </div>
+        <div class="pen-info">
+          <div class="pen-name">${pen.name}</div>
+          <div class="pen-date">${pen.formattedDate}</div>
+        </div>
+      </div>
+    `).join('');
+  }
 
-      function formatDate(dateString) {
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) { // Check if date is invalid
-          return "Date Unavailable";
-        }
-        const options = {
-          year: 'numeric',
-          month: 'long'
-        };
-        return new Date(dateString).toLocaleDateString('en-US', options);
-      }
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) { // Check if date is invalid
+      return "Date Unavailable";
+    }
+    const options = {
+      year: 'numeric',
+      month: 'long'
+    };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  }
 
-      function updatePaginationControls() {
-        totalPages = Math.ceil(displayedPens.length / pensPerPage);
-        const pageInfo = document.getElementById('page-info');
-        pageInfo.innerHTML = '';
-        for (let i = 1; i <= totalPages; i++) {
-          const pageLink = document.createElement('button');
-          pageLink.textContent = i;
-          pageLink.className = 'page-link';
-          if (i === currentPage) {
-            pageLink.classList.add('current-page');
-          } else {
-            pageLink.addEventListener('click', function() {
-              currentPage = i;
-              displayPage(currentPage);
-            });
-          }
-          pageInfo.appendChild(pageLink);
-        }
-        const prevButton = document.getElementById('prev-page');
-        const nextButton = document.getElementById('next-page');
-        prevButton.disabled = currentPage === 1; // Disable if on the first page
-        nextButton.disabled = currentPage >= totalPages; // Disable if on the last page
-      }
-      document.getElementById('next-page').addEventListener('click', function() {
-        if (currentPage < totalPages) {
-          currentPage++;
+  function updatePaginationControls() {
+    totalPages = Math.ceil(displayedPens.length / pensPerPage);
+    const pageInfo = document.getElementById('page-info');
+    pageInfo.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+      const pageLink = document.createElement('button');
+      pageLink.textContent = i;
+      pageLink.className = 'page-link';
+      if (i === currentPage) {
+        pageLink.classList.add('current-page');
+      } else {
+        pageLink.addEventListener('click', function() {
+          currentPage = i;
           displayPage(currentPage);
-        }
-      });
-      document.getElementById('prev-page').addEventListener('click', function() {
-        if (currentPage > 1) {
-          currentPage--;
-          displayPage(currentPage);
-        }
-      });
-      searchInput.addEventListener('input', applyFilters);
-      document.getElementById('filter-form').addEventListener('change', applyFilters);
-      document.getElementById('sort-by').addEventListener('change', function() {
-        currentSort = this.value;
-        sortPens(currentSort);
-      });
-
-      function sortPens(option) {
-        switch (option) {
-          case 'newest':
-            displayedPens.sort((a, b) => new Date(b.date) - new Date(a.date));
-            break;
-          case 'oldest':
-            displayedPens.sort((a, b) => new Date(a.date) - new Date(b.date));
-            break;
-          case 'nameAZ':
-            displayedPens.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-          case 'nameZA':
-            displayedPens.sort((a, b) => b.name.localeCompare(a.name));
-            break;
-        }
-        displayPage(1);
-      }
-      fetchPenData();
-      // Update the year dynamically in the footer
-      const currentYear = new Date().getFullYear();
-      const copyrightElement = document.getElementById('copyright-year');
-      if (copyrightElement) {
-        copyrightElement.textContent = `© ${currentYear} PenGems Hall of Fame Archive. All rights reserved.`;
-      }
-
-      function downloadCSV() {
-        const date = new Date();
-        // Formatting date as 'Jul-09-2024'
-        const formattedDate = date.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: '2-digit'
-        }).replace(/,|\//g, '').replace(/ /g, '-');  // Remove commas, replace spaces with dashes
-
-        let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += "Pen Name,Release Date\n"; // Header row
-        allPens.forEach(pen => {
-          let row = `${pen.name},${pen.formattedDate}`;
-          csvContent += row + "\n";
         });
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", `PenGems Hall of Fame (${formattedDate}).csv`);
-        document.body.appendChild(link); // Required for Firefox
-        link.click(); // This will download the data file with the current date in the name.
       }
+      pageInfo.appendChild(pageLink);
+    }
+    const prevButton = document.getElementById('prev-page');
+    const nextButton = document.getElementById('next-page');
+    prevButton.disabled = currentPage === 1; // Disable if on the first page
+    nextButton.disabled = currentPage >= totalPages; // Disable if on the last page
+  }
 
-      document.getElementById('export-csv').addEventListener('click', downloadCSV);
+  document.getElementById('next-page').addEventListener('click', function() {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayPage(currentPage);
+    }
+  });
 
-      // Hamburger menu toggle
-      const hamburgerMenu = document.getElementById('hamburger-menu');
-      const sidebar = document.getElementById('sidebar');
-      const closeBtn = document.getElementById('close-btn');
-      const overlay = document.getElementById('overlay');
+  document.getElementById('prev-page').addEventListener('click', function() {
+    if (currentPage > 1) {
+      currentPage--;
+      displayPage(currentPage);
+    }
+  });
 
-      hamburgerMenu.addEventListener('click', function () {
-        sidebar.classList.toggle('open');
-        overlay.classList.toggle('show');
-      });
+  searchInput.addEventListener('input', applyFilters);
+  yearCheckboxes.forEach(checkbox => checkbox.addEventListener('change', applyFilters));
+  document.getElementById('sort-by').addEventListener('change', function() {
+    currentSort = this.value;
+    sortPens(currentSort);
+  });
 
-      closeBtn.addEventListener('click', function () {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('show');
-      });
+  function sortPens(option) {
+    switch (option) {
+      case 'newest':
+        displayedPens.sort((a, b) => new Date(b.date) - new Date(a.date));
+        break;
+      case 'oldest':
+        displayedPens.sort((a, b) => new Date(a.date) - new Date(b.date));
+        break;
+      case 'nameAZ':
+        displayedPens.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'nameZA':
+        displayedPens.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+    }
+    displayPage(1);
+  }
 
-      overlay.addEventListener('click', function () {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('show');
-      });
+  fetchPenData();
+
+  // Update the year dynamically in the footer
+  const currentYear = new Date().getFullYear();
+  const copyrightElement = document.getElementById('copyright-year');
+  if (copyrightElement) {
+    copyrightElement.textContent = `© ${currentYear} PenGems Hall of Fame Archive. All rights reserved.`;
+  }
+
+  function downloadCSV() {
+    const date = new Date();
+    // Formatting date as 'Jul-09-2024'
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit'
+    }).replace(/,|\//g, '').replace(/ /g, '-');  // Remove commas, replace spaces with dashes
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Pen Name,Release Date\n"; // Header row
+    allPens.forEach(pen => {
+      let row = `${pen.name},${pen.formattedDate}`;
+      csvContent += row + "\n";
     });
-  </script>
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `PenGems Hall of Fame (${formattedDate}).csv`);
+    document.body.appendChild(link); // Required for Firefox
+    link.click(); // This will download the data file with the current date in the name.
+  }
+
+  document.getElementById('export-csv').addEventListener('click', downloadCSV);
+
+  // Hamburger menu toggle
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const sidebar = document.getElementById('sidebar');
+  const closeBtn = document.getElementById('close-btn');
+  const overlay = document.getElementById('overlay');
+
+  hamburgerMenu.addEventListener('click', function () {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+
+  closeBtn.addEventListener('click', function () {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+
+  overlay.addEventListener('click', function () {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+});
+</script>
 </body>
 </html>
