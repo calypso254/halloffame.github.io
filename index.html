@@ -356,7 +356,6 @@
       cursor: pointer;
       position: absolute;
       left: 10px;
-      top: 20px;
     }
 
     .hamburger-menu div {
@@ -425,17 +424,24 @@
         gap: 1em;
       }
 
-      .main-nav__wrapper {
-        justify-content: center;
-      }
+        .main-nav__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
 
       .nav-desktop {
         display: none;
       }
 
-      .hamburger-menu {
-        display: block;
-      }
+ .hamburger-menu {
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
       .overlay {
         display: none;
