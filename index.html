@@ -331,11 +331,12 @@ font-size: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: 2em;
 }
 
 .pagination button {
-  margin: 0 0.5em;
+  margin: 0.25em;
   padding: 0.5em 1em;
   background-color: #fff;
   border: 1px solid #000;
@@ -343,7 +344,7 @@ font-size: 0.75rem;
   transition: background-color 0.3s ease;
 }
 
-.pagination button:hover {
+.pagination button:hover:not(:disabled) {
   background-color: #d6dcde;
 }
 
@@ -354,8 +355,14 @@ font-size: 0.75rem;
 
 .page-link.current-page {
   background-color: #000;
-  cursor: default;
   color: #fff;
+}
+
+@media (max-width: 480px) {
+  .pagination button {
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+  }
 }
 
 footer {
@@ -733,29 +740,53 @@ footer {
     return new Date(dateString).toLocaleDateString('en-US', options);
   }
 
-  function updatePaginationControls() {
-    totalPages = Math.ceil(displayedPens.length / pensPerPage);
-    const pageInfo = document.getElementById('page-info');
-    pageInfo.innerHTML = '';
-    for (let i = 1; i <= totalPages; i++) {
-      const pageLink = document.createElement('button');
-      pageLink.textContent = i;
-      pageLink.className = 'page-link';
-      if (i === currentPage) {
-        pageLink.classList.add('current-page');
-      } else {
-        pageLink.addEventListener('click', function() {
-          currentPage = i;
-          displayPage(currentPage);
-        });
-      }
-      pageInfo.appendChild(pageLink);
-    }
-    const prevButton = document.getElementById('prev-page');
-    const nextButton = document.getElementById('next-page');
-    prevButton.disabled = currentPage === 1; // Disable if on the first page
-    nextButton.disabled = currentPage >= totalPages; // Disable if on the last page
+function updatePaginationControls() {
+  totalPages = Math.ceil(displayedPens.length / pensPerPage);
+  const pageInfo = document.getElementById('page-info');
+  pageInfo.innerHTML = '';
+
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
   }
+
+  function addPageButton(pageNum, text) {
+    const pageLink = document.createElement('button');
+    pageLink.textContent = text || pageNum;
+    pageLink.className = 'page-link';
+    if (pageNum === currentPage) {
+      pageLink.classList.add('current-page');
+    } else {
+      pageLink.addEventListener('click', function() {
+        currentPage = pageNum;
+        displayPage(currentPage);
+      });
+    }
+    pageInfo.appendChild(pageLink);
+  }
+
+  if (startPage > 1) {
+    addPageButton(1);
+    if (startPage > 2) addPageButton(startPage - 1, '...');
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    addPageButton(i);
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) addPageButton(endPage + 1, '...');
+    addPageButton(totalPages);
+  }
+
+  const prevButton = document.getElementById('prev-page');
+  const nextButton = document.getElementById('next-page');
+  prevButton.disabled = currentPage === 1;
+  nextButton.disabled = currentPage >= totalPages;
+}
   document.getElementById('next-page').addEventListener('click', function() {
     if (currentPage < totalPages) {
       currentPage++;
