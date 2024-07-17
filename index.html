@@ -49,7 +49,16 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1rem;
+  box-sizing: border-box;
 }
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .full-width {
+            width: 100%;
+        }    
 
 #content p {
   margin-bottom: 1em;
@@ -131,18 +140,12 @@ h2, h3 {
 }
 
 .content-wrapper {
-  width: 100%
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 100%;
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
-    .content-wrapper img{
-      max-width: 100%;
-      height: auto;
-    }
 
 header {
   background-color: #000;
@@ -548,7 +551,7 @@ footer {
   </style>
 </head>
 <body>
-  <header>
+  <header class="full-width">
     <div class="hamburger-menu" id="hamburger-menu">
       <div></div>
       <div></div>
@@ -569,6 +572,7 @@ footer {
       </nav>
     </div>
   </header>
+  <div class="page-container">
     <div><h1 class="title">Hall of Fame</h1></div>
   <div class="content-wrapper">
     <div class="overlay" id="overlay"></div>
@@ -658,6 +662,7 @@ footer {
     <footer>
       <p id="copyright-year">&copy; 2023 PenGems Hall of Fame Archive. All rights reserved.</p>
     </footer>
+  </div>
   <script>
    document.addEventListener('DOMContentLoaded', function() {
   const API_KEY = 'AIzaSyCRa06VlXi7I3YQjhwoGEyie5FWCxp88ik';
