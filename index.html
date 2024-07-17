@@ -146,7 +146,10 @@ h2, h3 {
   box-sizing: border-box;
   overflow-x: hidden;
 }
-
+  .main-content {
+    flex: 1;
+    padding: 1em;
+  }
 header {
   background-color: #000;
   color: #fff;
@@ -222,11 +225,6 @@ nav a:hover {
   margin-bottom: 0.5em;
 }
 
-.main-content {
-  flex: 1;
-  padding: 1em;
-}
-
 .search-bar {
   margin-bottom: 1em;
   display: flex;
@@ -260,7 +258,7 @@ nav a:hover {
   font-weight: bold;
   background-color: #fff;
 font-size: 0.75rem;
-  padding-right: 5%;
+  padding-right: 30px;
 }
 
 .gallery {
@@ -437,7 +435,6 @@ footer {
   display: none;
 }
 
-/* Styles for the hamburger menu and sidebar on smaller screens */
 @media (max-width: 798px) {
   h1 {
     font-size: 2rem;
