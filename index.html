@@ -131,12 +131,18 @@ h2, h3 {
 }
 
 .content-wrapper {
+  width: 100%
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
   flex-wrap: wrap;
+  box-sizing: border-box;
 }
+    .content-wrapper img{
+      max-width: 100%;
+      height: auto;
+    }
 
 header {
   background-color: #000;
@@ -258,6 +264,7 @@ font-size: 0.75rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
+  width: 100%;
 }
 
 .pen-card {
