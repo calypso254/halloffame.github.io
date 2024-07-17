@@ -10,33 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ms+Madi&display=swap" rel="stylesheet">
 
   <style>
-.section_select .sort_by {
-  color: #000000;
-  display: inline-block;
-  border: none;
-  background-position: 100% 50%;
-  background-color: #ffffff; 
-  font-family: "Josefin Sans", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  width: auto;
-  margin-bottom: 0;
-  max-width: 80%;
-}
-
-select.sort_by {
-  background: #fff url('data:image/svg+xml,%3Csvg width="50" height="27" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M25 27.05 0 1.319 1.367 0 25 24.316 48.633 0 50 1.318z" fill="%23000" fill-rule="nonzero"/%3E%3C/svg%3E') no-repeat 95% 50%;
-  background-size: 0.85rem;
-  border: 1px solid #d9dbdc;
-  -webkit-appearance: none;
-  appearance: none;
-  text-indent: 0.01px;
-  text-overflow: "";
-}
-
-/* Existing CSS */
+/* Base styles */
 html {
   font-size: 16px;
 }
@@ -51,20 +25,8 @@ body {
   font-size: 1rem;
   box-sizing: border-box;
 }
-        .page-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .full-width {
-            width: 100%;
-        }    
 
-#content p {
-  margin-bottom: 1em;
-  display: block;
-}
-
+/* Typography */
 h1 {
   font-family: "Ms Madi", sans-serif;
   letter-spacing: 0px;
@@ -75,18 +37,46 @@ h1 {
   font-style: normal;
 }
 
-.title {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 1200px;
-text-align: center;
-}
-
 h2, h3 {
   font-family: 'Josefin Sans', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
+}
+
+/* Layout */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.content-wrapper {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1em;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  position: relative;
 }
 
 .main-nav__wrapper {
@@ -139,49 +129,6 @@ h2, h3 {
   font-size: 0.875rem;
 }
 
-.content-wrapper {
-  max-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-  .main-content {
-    flex: 1;
-    padding: 1em;
-  }
-header {
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  padding: 1em;
-  border-bottom: 1px solid #000;
-  width: 100%;
-  position: relative;
-}
-
-button {
-  border: 1px solid black;
-  background: white;
-  border-radius: 3px;
-  font-size: .875rem;
-  margin: 10px 0px;
-  padding: 8px;
-  font-family: 'Josefin Sans', sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-button:hover {
-    background: black;
-    color: white;
-}
-
-#export-csv {
-  width: 100%;
-}
-
 nav {
   margin-top: 1em;
 }
@@ -201,6 +148,7 @@ nav a:hover {
   color: #00c5cd;
 }
 
+/* Sidebar */
 .sidebar {
   width: 15%;
   background-color: #fff;
@@ -225,6 +173,7 @@ nav a:hover {
   margin-bottom: 0.5em;
 }
 
+/* Search Bar */
 .search-bar {
   margin-bottom: 1em;
   display: flex;
@@ -241,6 +190,7 @@ nav a:hover {
   font-family: 'Lato', sans-serif;
 }
 
+/* Sort Options */
 .sort-options {
   margin-bottom: 1em;
   display: flex;
@@ -257,10 +207,38 @@ nav a:hover {
   letter-spacing: 2px;
   font-weight: bold;
   background-color: #fff;
-font-size: 0.75rem;
+  font-size: 0.75rem;
   padding-right: 30px;
 }
 
+/* Section Select */
+.section_select .sort_by {
+  color: #000000;
+  display: inline-block;
+  border: none;
+  background-position: 100% 50%;
+  background-color: #ffffff; 
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  width: auto;
+  margin-bottom: 0;
+  max-width: 80%;
+}
+
+select.sort_by {
+  background: #fff url('data:image/svg+xml,%3Csvg width="50" height="27" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M25 27.05 0 1.319 1.367 0 25 24.316 48.633 0 50 1.318z" fill="%23000" fill-rule="nonzero"/%3E%3C/svg%3E') no-repeat 95% 50%;
+  background-size: 0.85rem;
+  border: 1px solid #d9dbdc;
+  -webkit-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+
+/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -315,6 +293,29 @@ font-size: 0.75rem;
   font-size: 0.8em;
 }
 
+/* Buttons */
+button {
+  border: 1px solid black;
+  background: white;
+  border-radius: 3px;
+  font-size: .875rem;
+  margin: 10px 0px;
+  padding: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+
+#export-csv {
+  width: 100%;
+}
+
 .info-button {
   display: block;
   width: 80%;
@@ -335,6 +336,7 @@ font-size: 0.75rem;
   background-color: #d6dcde;
 }
 
+/* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
@@ -361,24 +363,17 @@ font-size: 0.75rem;
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 .page-link {
   min-width: 30px;
 }
+
 .page-link.current-page {
   background-color: #000;
   color: #fff;
 }
 
-@media (max-width: 480px) {
-  .pagination button {
-    padding: 0.5em 0.5em;
-    font-size: 0.875em;
-  }
-  page-link {
-    padding: 5px 8px;
-  }
-}
-
+/* Footer */
 footer {
   background-color: #d6dcde;
   color: #000;
@@ -388,9 +383,12 @@ footer {
   border-top: 1px solid #000;
   width: 100%;
 }
+
 .content-wrapper, footer {
   clear: both;
 }
+
+/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -410,7 +408,6 @@ footer {
 }
 
 /* Hamburger Menu Styles */
-
 .hamburger-menu {
   display: none;
   cursor: pointer;
@@ -435,6 +432,7 @@ footer {
   display: none;
 }
 
+/* Media Queries */
 @media (max-width: 798px) {
   h1 {
     font-size: 2rem;
@@ -543,6 +541,29 @@ footer {
   .overlay.show {
     display: block;
   }
+}
+
+@media (max-width: 480px) {
+  .pagination button {
+    padding: 0.5em 0.5em;
+    font-size: 0.875em;
+  }
+  .page-link {
+    padding: 5px 8px;
+  }
+}
+
+/* Additional Styles */
+.title {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1200px;
+  text-align: center;
+}
+
+#content p {
+  margin-bottom: 1em;
+  display: block;
 }
 
   </style>
