@@ -331,7 +331,8 @@ font-size: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 10px;
   margin-top: 2em;
 }
 
@@ -352,7 +353,9 @@ font-size: 0.75rem;
   opacity: 0.5;
   cursor: not-allowed;
 }
-
+.page-link {
+  min-width: 30px;
+}
 .page-link.current-page {
   background-color: #000;
   color: #fff;
@@ -362,6 +365,9 @@ font-size: 0.75rem;
   .pagination button {
     padding: 0.5em 0.5em;
     font-size: 0.875em;
+  }
+  page-link {
+    padding: 5px 8px;
   }
 }
 
@@ -747,7 +753,15 @@ function updatePaginationControls() {
   const pageInfo = document.getElementById('page-info');
   pageInfo.innerHTML = '';
 
-  const maxVisiblePages = 5;
+  // Adjust maxVisiblePages based on screen width
+  const screenWidth = window.innerWidth;
+  let maxVisiblePages = 5;
+  if (screenWidth < 500) {
+    maxVisiblePages = 3;  // Fewer pages for very small screens
+  } else if (screenWidth < 800) {
+    maxVisiblePages = 4;  // Slightly more for medium screens
+  }
+
   let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
   let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
@@ -789,6 +803,7 @@ function updatePaginationControls() {
   prevButton.disabled = currentPage === 1;
   nextButton.disabled = currentPage >= totalPages;
 }
+
   document.getElementById('next-page').addEventListener('click', function() {
     if (currentPage < totalPages) {
       currentPage++;
