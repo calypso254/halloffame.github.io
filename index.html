@@ -373,9 +373,10 @@ footer {
   margin-top: 2em;
   border-top: 1px solid #000;
   width: 100%;
+}
+.content-wrapper, footer {
   clear: both;
 }
-
 .lightbox {
   display: none;
   position: fixed;
@@ -627,23 +628,23 @@ footer {
     <option value="newest">Date, New to Old</option>
   </select>
 </div>
+      <div class="gallery">
 
-
-      <div class="gallery"></div>
+      </div>
       <div class="pagination">
         <button id="prev-page" disabled>Previous</button>
         <span id="page-info">Page 1 of 1</span>
         <button id="next-page" disabled>Next</button>
       </div>
     </main>
+
+  </div>
+          <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Expanded Pen Image">
+  </div>
     <footer>
       <p id="copyright-year">&copy; 2023 PenGems Hall of Fame Archive. All rights reserved.</p>
     </footer>
-  </div>
-  <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="" alt="Expanded Pen Image">
-  </div>
-
   <script>
    document.addEventListener('DOMContentLoaded', function() {
   const API_KEY = 'AIzaSyCRa06VlXi7I3YQjhwoGEyie5FWCxp88ik';
